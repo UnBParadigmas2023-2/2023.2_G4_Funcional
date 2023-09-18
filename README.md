@@ -10,6 +10,7 @@
 | -- | -- |
 | 20/0028472 |  Vinícius Assumpcao de Araújo |
 | 18/0063162  |  Daniel Primo de Melo |
+| xx/xxxxxxx  |  xxx xxx xxx xxx |
 
 ## Sobre 
 Este é um projeto de implementação do jogo de damas em Haskell. O jogo de damas é um clássico jogo de tabuleiro para dois jogadores, onde o objetivo é capturar todas as peças do adversário ou bloqueá-las de forma que não possam mais mover.
