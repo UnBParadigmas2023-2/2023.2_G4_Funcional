@@ -8,10 +8,10 @@
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| 17/0085023 | Carla Rocha Cangussú |
+| 17/0085023 |  Carla Rocha Cangussú |
 | 20/0028472 |  Vinícius Assumpcao de Araújo |
-| 18/0063162  |  Daniel Primo de Melo |
-| xx/xxxxxxx  |  xxx xxx xxx xxx |
+| 18/0063162 |  Daniel Primo de Melo |
+| 20/2029012 |  Josué Teixeira Santana |
 
 ## Sobre 
 Este é um projeto de implementação do jogo de damas em Haskell. O jogo de damas é um clássico jogo de tabuleiro para dois jogadores, onde o objetivo é capturar todas as peças do adversário ou bloqueá-las de forma que não possam mais mover.
