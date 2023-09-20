@@ -1,5 +1,6 @@
 import RegrasDamas (validateMove, checkWin, Piece(..), Board)
 import Data.List (intersperse)
+import System.Console.Haskeline
 
 
 printBoard :: Board -> IO ()
@@ -32,7 +33,7 @@ playGame :: Board -> Piece -> IO ()
 playGame board player = do
     putStrLn $ "Jogador atual: " ++ show player
     putStrLn "Informe a jogada (linhaOrigem colunaOrigem linhaDestino colunaDestino): "
-    input <- getLine
+    input <- runInputT defaultSettings getLine'
     let [rowFrom, colFrom, rowTo, colTo] = map read (words input)
     case validateMove board player rowFrom colFrom rowTo colTo of
         Just newBoard -> do
@@ -43,6 +44,8 @@ playGame board player = do
         Nothing -> do
             putStrLn "Jogada inválida, tente novamente."
             playGame board player
+  where
+    getLine' = getInputLine "" >>= maybe (return "") return
 
 main :: IO ()
 main = do
