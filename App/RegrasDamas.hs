@@ -29,8 +29,8 @@ validateMove board player rowFrom colFrom rowTo colTo
     isCaptureMove = abs rowDiff == 2 && abs colDiff == 2 && isOpponentPiece (rowFrom + signum rowDiff) (colFrom + signum colDiff)
     isSimpleMove = abs rowDiff == 1 && abs colDiff == 1 && isValidDirection
     isValidDirection
-        | player == Black = rowDiff == 1 && rowTo > rowFrom
-        | player == White = rowDiff == -1 && rowTo < rowFrom
+        | player == Black = rowDiff == 1 
+        | player == White = rowDiff == -1 
         | otherwise = False
     isOpponentPiece r c = r >= 0 && r < 8 && c >= 0 && c < 8 && board !! r !! c == nextPlayer player
     makeCaptureMove = Just $ replaceAt rowTo colTo player $ replaceAt (rowFrom + signum rowDiff) (colFrom + signum colDiff) Empty $ replaceAt rowFrom colFrom Empty board
