@@ -12,6 +12,7 @@
 | 20/0028472 |  Vinícius Assumpcao de Araújo |
 | 18/0063162 |  Daniel Primo de Melo |
 | 20/2029012 |  Josué Teixeira Santana |
+| 20/0020650 |  João Pedro de Camargo Vaz |
 
 ## Sobre 
 Este é um projeto de implementação do jogo de damas em Haskell. O jogo de damas é um clássico jogo de tabuleiro para dois jogadores, onde o objetivo é capturar todas as peças do adversário ou bloqueá-las de forma que não possam mais mover.
@@ -50,7 +51,8 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa |
+| Vinicius Assumpção  |  Criação do esqueleto base que foi utilizado para a implementação do projeto | Excelente |
+| João Pedro de Camargo Vaz  |  Participação na criação e edição do esqueleto do jogo e criação de regras para validação de jogadas e de turnos | Excelente |
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
