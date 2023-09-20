@@ -27,6 +27,7 @@ createInitialBoard =
 playGame :: Board -> Piece -> IO ()
 playGame board player = do
     putStrLn $ "Jogador atual: " ++ show player
+    putStrLn "Caso queira finalizar o programa, pressione CTRL + C"
     putStrLn "Informe a jogada (linhaOrigem colunaOrigem linhaDestino colunaDestino): "
     input <- runInputT defaultSettings getLine'
     case map read (words input) of
