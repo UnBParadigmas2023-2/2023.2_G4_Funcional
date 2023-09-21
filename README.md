@@ -54,7 +54,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | -- | -- | -- |
 | Vinicius Assumpção  |  Criação do esqueleto base que foi utilizado para a implementação do projeto, criacao inicial do menu, revisao das regras especiais e do menu final | Excelente |
 | João Pedro de Camargo Vaz  |  Participação na criação e edição do esqueleto do jogo e criação de regras para validação de jogadas e de turnos | Excelente |
-| Gabriel Roger Amorim da Cruz | Participação na criação de regras para validação de jogadas e criação de tratamentos para lidar com entradas inválidas/inesperadas do usuário | Excelente | 
+| Gabriel Roger Amorim da Cruz | Participação na criação de regras para validação de jogadas, criação de tratamentos para lidar com entradas inválidas/inesperadas do usuário, melhoria da interface e correção de erros | Excelente | 
 
 ## Outros 
 
