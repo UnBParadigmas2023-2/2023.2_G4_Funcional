@@ -52,16 +52,13 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Vinicius Assumpção  |  Criação do esqueleto base que foi utilizado para a implementação do projeto | Excelente |
+| Vinicius Assumpção  |  Criação do esqueleto base que foi utilizado para a implementação do projeto, criacao inicial do menu, revisao das regras especiais e do menu final | Excelente |
 | João Pedro de Camargo Vaz  |  Participação na criação e edição do esqueleto do jogo e criação de regras para validação de jogadas e de turnos | Excelente |
 | Gabriel Roger Amorim da Cruz | Participação na criação de regras para validação de jogadas e criação de tratamentos para lidar com entradas inválidas/inesperadas do usuário | Excelente | 
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
+
+Desenvolver um projeto de jogo de damas em Haskell foi um desafio que proporcionou valiosas lições. A linguagem funcional pura destacou a importância da abstração e da elegância na programação, incentivando a pensar de maneira estruturada. Além disso, a familiarização com ferramentas como o Haskell Stack e o Haskelline foi essencial, enquanto o planejamento detalhado e a resolução de problemas contínuos demonstraram a necessidade de uma abordagem organizada e perseverante no desenvolvimento de software. Em resumo, essa experiência ampliou o entendimento da programação funcional, fortaleceu nossas habilidades de resolução de problemas e reforçou a importância do planejamento e da divisão de tarefas em projetos complexos.
 
 ## Fontes
 - http://blog.gbacon.com/2011/01/checkers-game-over-in-haskell.html
