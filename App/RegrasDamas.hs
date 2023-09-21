@@ -10,7 +10,6 @@ module RegrasDamas
     -- ... e possivelmente outras funções e tipos que você queira exportar
     ) where
 
-
 import Data.List
 
 data Piece = Empty | Black | White deriving (Eq, Show)
@@ -61,10 +60,9 @@ isValidCapture board player rowFrom colFrom rowTo colTo =
 replaceAt :: Int -> Int -> a -> [[a]] -> [[a]]
 replaceAt row col val matrix = take row matrix ++ [take col (matrix !! row) ++ [val] ++ drop (col + 1) (matrix !! row)] ++ drop (row + 1) matrix
 
-
 nextPlayer :: Piece -> Piece
 nextPlayer Black = White
 nextPlayer White = Black
 
 checkWin :: Board -> Piece -> Bool
-checkWin board player = null [() | row <- board, player `elem` row]
+checkWin board player = null [() | row <- board, (nextPlayer player) `elem` row]
