@@ -9,6 +9,8 @@ printBoard board = putStrLn $ unlines (legend : headerRow : map showRow (zip [0.
     showPiece Empty = '.'
     showPiece Black = 'B'
     showPiece White = 'W'
+    showPiece KingB = 'K'  
+    showPiece KingW = 'Q'
     headerRow = "  " ++ unwords (map show [0..7])
     legend = "Legenda: B - Peça Preta, W - Peça Branca"
 
@@ -50,6 +52,8 @@ playGame board player = do
 nextPlayer :: Piece -> Piece
 nextPlayer Black = White
 nextPlayer White = Black
+nextPlayer KingB = White
+nextPlayer KingW = Black
 
 main :: IO ()
 main = do
