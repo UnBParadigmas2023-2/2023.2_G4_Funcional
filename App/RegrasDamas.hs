@@ -11,7 +11,7 @@ module RegrasDamas
 
 import Data.List
 
-data Piece = Empty | Black | White | KingW | KingB deriving (Eq, Show)
+data Piece = Empty | Black | White | King Piece deriving (Eq, Show)
 type Board = [[Piece]]
 
 validateMove :: Board -> Piece -> Int -> Int -> Int -> Int -> Maybe Board
@@ -34,12 +34,13 @@ validateMove board player rowFrom colFrom rowTo colTo
         | otherwise = False
     isOpponentPiece r c = r >= 0 && r < 8 && c >= 0 && c < 8 && board !! r !! c == nextPlayer player
     makeCaptureMove
-        | rowTo == 7 && player == Black = Just $ replaceAt rowTo colTo KingB $ replaceAt (rowFrom + signum rowDiff) (colFrom + signum colDiff) Empty $ replaceAt rowFrom colFrom Empty board
-        | rowTo == 0 && player == White = Just $ replaceAt rowTo colTo KingW $ replaceAt (rowFrom + signum rowDiff) (colFrom + signum colDiff) Empty $ replaceAt rowFrom colFrom Empty board
+        | rowTo == 7 && player == Black = Just $ replaceAt rowTo colTo (King Black) $ replaceAt (rowFrom + signum rowDiff) (colFrom + signum colDiff) Empty $ replaceAt rowFrom colFrom Empty board
+        | rowTo == 0 && player == White = Just $ replaceAt rowTo colTo (King White) $ replaceAt (rowFrom + signum rowDiff) (colFrom + signum colDiff) Empty $ replaceAt rowFrom colFrom Empty board
         | otherwise = Just $ replaceAt rowTo colTo player $ replaceAt (rowFrom + signum rowDiff) (colFrom + signum colDiff) Empty $ replaceAt rowFrom colFrom Empty board
     makeSimpleMove 
-        | rowTo == 7 && player == Black = replaceAt rowTo colTo KingB $ replaceAt rowFrom colFrom Empty board
-        | rowTo == 0 && player == White = replaceAt rowTo colTo KingW $ replaceAt rowFrom colFrom Empty board
+        | rowTo == 7 && player == Black = replaceAt rowTo colTo (King Black) $ replaceAt rowFrom colFrom Empty board
+        | rowTo == 0 && player == White = replaceAt rowTo colTo (King White) $ replaceAt rowFrom colFrom Empty board
+        | isKingPiece = replaceAt rowTo colTo (King player) $ replaceAt rowFrom colFrom Empty board
         | otherwise = replaceAt rowTo colTo player $ replaceAt rowFrom colFrom Empty board
 
 
@@ -51,8 +52,8 @@ replaceAt row col val matrix = take row matrix ++ [take col (matrix !! row) ++ [
 nextPlayer :: Piece -> Piece
 nextPlayer Black = White
 nextPlayer White = Black
-nextPlayer KingB = White
-nextPlayer KingW = Black
+nextPlayer (King Black) = White
+nextPlayer (King White) = Black
 
 checkWin :: Board -> Piece -> Bool
 checkWin board player = null [() | row <- board, player `elem` row]
