@@ -1,5 +1,3 @@
--- RegrasDamas.hs
-
 module RegrasDamas
     ( validateMove
     , checkWin
@@ -7,7 +5,6 @@ module RegrasDamas
     , executeCaptureMove
     , Piece(..)
     , Board
-    -- ... e possivelmente outras funções e tipos que você queira exportar
     ) where
 
 import Data.List
@@ -36,7 +33,6 @@ validateMove board player rowFrom colFrom rowTo colTo
     invalidMove = outOfBounds || notPlayerPiece || notEmpty || (not isCaptureMove && not isSimpleMove)
     makeCaptureMove = Just $ executeCaptureMove board player rowFrom colFrom rowTo colTo
     makeSimpleMove = replaceAt rowTo colTo player $ replaceAt rowFrom colFrom Empty board
-
 
 executeCaptureMove :: Board -> Piece -> Int -> Int -> Int -> Int -> Board
 executeCaptureMove board player rowFrom colFrom rowTo colTo =
