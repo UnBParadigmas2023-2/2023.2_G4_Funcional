@@ -3,6 +3,8 @@
 module RegrasDamas
     ( validateMove
     , checkWin
+    , canCapture
+    , executeCaptureMove
     , Piece(..)
     , Board
     -- ... e possivelmente outras funções e tipos que você queira exportar
@@ -33,10 +35,27 @@ validateMove board player rowFrom colFrom rowTo colTo
         | player == White = rowDiff == -1 
         | otherwise = False
     isOpponentPiece r c = r >= 0 && r < 8 && c >= 0 && c < 8 && board !! r !! c == nextPlayer player
-    makeCaptureMove = Just $ replaceAt rowTo colTo player $ replaceAt (rowFrom + signum rowDiff) (colFrom + signum colDiff) Empty $ replaceAt rowFrom colFrom Empty board
+    makeCaptureMove = Just $ executeCaptureMove board player rowFrom colFrom rowTo colTo
     makeSimpleMove = replaceAt rowTo colTo player $ replaceAt rowFrom colFrom Empty board
 
+executeCaptureMove :: Board -> Piece -> Int -> Int -> Int -> Int -> Board
+executeCaptureMove board player rowFrom colFrom rowTo colTo =
+    let intermediateBoard = replaceAt rowTo colTo player $ replaceAt (rowFrom + signum (rowTo - rowFrom)) (colFrom + signum (colTo - colFrom)) Empty $ replaceAt rowFrom colFrom Empty board
+    in intermediateBoard  -- Mantenha a captura na mesma função, e o controle será passado de volta ao main.hs
 
+canCapture :: Board -> Piece -> Int -> Int -> Bool
+canCapture board player row col =
+    any (\(rowDiff, colDiff) -> isValidCapture board player row col (row + rowDiff) (col + colDiff)) captureDirections
+  where
+    captureDirections = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
+
+isValidCapture :: Board -> Piece -> Int -> Int -> Int -> Int -> Bool
+isValidCapture board player rowFrom colFrom rowTo colTo =
+    let rowDiff = rowTo - rowFrom
+        colDiff = colTo - colFrom
+    in abs rowDiff == 2 && abs colDiff == 2 && isOpponentPiece (rowFrom + signum rowDiff) (colFrom + signum colDiff)
+  where
+    isOpponentPiece r c = r >= 0 && r < 8 && c >= 0 && c < 8 && board !! r !! c == nextPlayer player
 
 replaceAt :: Int -> Int -> a -> [[a]] -> [[a]]
 replaceAt row col val matrix = take row matrix ++ [take col (matrix !! row) ++ [val] ++ drop (col + 1) (matrix !! row)] ++ drop (row + 1) matrix
