@@ -18,10 +18,9 @@ type Board = [[Piece]]
 
 validateMove :: Board -> Piece -> Int -> Int -> Int -> Int -> Maybe Board
 validateMove board player rowFrom colFrom rowTo colTo
-    | outOfBounds || notPlayerPiece || notEmpty = Nothing
+    | outOfBounds || notPlayerPiece || notEmpty || invalidMove = Nothing
     | isCaptureMove = makeCaptureMove
     | isSimpleMove = Just makeSimpleMove
-    | otherwise = Nothing
   where
     outOfBounds = any (\x -> x < 0 || x >= 8) [rowFrom, colFrom, rowTo, colTo]
     notPlayerPiece = board !! rowFrom !! colFrom /= player
@@ -31,12 +30,14 @@ validateMove board player rowFrom colFrom rowTo colTo
     isCaptureMove = abs rowDiff == 2 && abs colDiff == 2 && isOpponentPiece (rowFrom + signum rowDiff) (colFrom + signum colDiff)
     isSimpleMove = abs rowDiff == 1 && abs colDiff == 1 && isValidDirection
     isValidDirection
-        | player == Black = rowDiff == 1 
-        | player == White = rowDiff == -1 
+        | player == Black = rowDiff == 1
+        | player == White = rowDiff == -1
         | otherwise = False
     isOpponentPiece r c = r >= 0 && r < 8 && c >= 0 && c < 8 && board !! r !! c == nextPlayer player
+    invalidMove = outOfBounds || notPlayerPiece || notEmpty || (not isCaptureMove && not isSimpleMove)
     makeCaptureMove = Just $ executeCaptureMove board player rowFrom colFrom rowTo colTo
     makeSimpleMove = replaceAt rowTo colTo player $ replaceAt rowFrom colFrom Empty board
+
 
 executeCaptureMove :: Board -> Piece -> Int -> Int -> Int -> Int -> Board
 executeCaptureMove board player rowFrom colFrom rowTo colTo =
