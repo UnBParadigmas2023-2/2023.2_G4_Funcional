@@ -14,6 +14,8 @@ printBoard board = do
     showPiece Empty = '.'
     showPiece Black = 'B'
     showPiece White = 'W'
+    showPiece (King Black) = 'K'  
+    showPiece (King White) = 'Q'
     headerRow = "\n  " ++ unwords (map show [0..7])
     legend = "\nLegenda: B - Peça Preta | W - Peça Branca"
     countBlack = countPiece Black board
@@ -72,6 +74,8 @@ playGame board player = do
 nextPlayer :: Piece -> Piece
 nextPlayer Black = White
 nextPlayer White = Black
+nextPlayer (King Black) = White
+nextPlayer (King White) = Black
 
 main :: IO ()
 main = do
