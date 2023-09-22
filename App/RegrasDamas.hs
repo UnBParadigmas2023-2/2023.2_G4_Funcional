@@ -80,7 +80,6 @@ isValidCapture board player rowFrom colFrom rowTo colTo =
 replaceAt :: Int -> Int -> a -> [[a]] -> [[a]]
 replaceAt row col val matrix = take row matrix ++ [take col (matrix !! row) ++ [val] ++ drop (col + 1) (matrix !! row)] ++ drop (row + 1) matrix
 
-
 nextPlayer :: Piece -> Piece
 nextPlayer Black = White
 nextPlayer White = Black
@@ -91,20 +90,10 @@ checkWin :: Board -> Piece -> Bool
 checkWin board player =
     all (\row -> all (\piece -> piece /= nextPlayer player) row) board
 
-checkDraw :: Board -> Piece -> Piece -> Bool
-checkDraw board player1 player2 =
-    not (hasValidMove board player1) && not (hasValidMove board player2)
+checkDraw :: Board -> Bool
+checkDraw board =
+    not (any (canMove board Black) [0..7]) && not (any (canMove board White) [0..7])
   where
-    hasValidMove b p =
-        any (\row -> any (\col -> canCapture b p row col || canMoveSimple b p row col) [0..7]) [0..7]
-    canMoveSimple b p row col =
-        any (\(rowDiff, colDiff) -> isValidMove b p row col (row + rowDiff) (col + colDiff)) moveDirections
-    moveDirections = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
-
-isValidMove :: Board -> Piece -> Int -> Int -> Int -> Int -> Bool
-isValidMove board player rowFrom colFrom rowTo colTo =
-    let rowDiff = rowTo - rowFrom
-        colDiff = colTo - colFrom
-    in abs rowDiff == 1 && abs colDiff == 1 && isEmptyCell rowTo colTo
-  where
-    isEmptyCell r c = r >= 0 && r < 8 && c >= 0 && c < 8 && board !! r !! c == Empty
+    canMove :: Board -> Piece -> Int -> Bool
+    canMove b player row =
+        any (\col -> any (\r -> any (\c -> isNothing (validateMove b player row col r c)) [0..7]) [0..7]) [0..7]
