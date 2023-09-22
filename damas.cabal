@@ -39,6 +39,7 @@ library
 executable damas-exe
   main-is: main.hs
   other-modules:
+      Menu
       RegrasDamas
       Paths_damas
   hs-source-dirs:

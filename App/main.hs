@@ -1,9 +1,14 @@
 import RegrasDamas (validateMove, checkWin, checkDraw, canCapture, executeCaptureMove, Piece(..), Board)
 import Data.List (intersperse)
 import System.Console.Haskeline
+import Menu
+
+countPiece :: Piece -> Board -> Int
+countPiece piece board = sum [ length (filter (== piece) row) | row <- board ]
 
 printBoard :: Board -> IO ()
-printBoard board = putStrLn $ unlines (legend : headerRow : map showRow (zip [0..] board))
+printBoard board = do
+    putStrLn $ unlines (legend : countPieces : headerRow : map showRow (zip [0..] board))
   where
     showRow (rowNum, row) = show rowNum ++ " " ++ intersperse ' ' (map showPiece row)
     showPiece Empty = '.'
@@ -11,8 +16,11 @@ printBoard board = putStrLn $ unlines (legend : headerRow : map showRow (zip [0.
     showPiece White = 'W'
     showPiece (King Black) = 'K'  
     showPiece (King White) = 'Q'
-    headerRow = "  " ++ unwords (map show [0..7])
-    legend = "Legenda: B - Peça Preta, W - Peça Branca"
+    headerRow = "\n  " ++ unwords (map show [0..7])
+    legend = "\nLegenda: B - Peça Preta | W - Peça Branca"
+    countBlack = countPiece Black board
+    countWhite = countPiece White board
+    countPieces = "Peças Pretas (B): " ++ show countBlack ++ " | Peças Brancas (W): " ++ show countWhite
 
 createInitialBoard :: Board
 createInitialBoard = 
@@ -59,10 +67,10 @@ playGame board player = do
                                         return ()
                                     else playGame newBoard (nextPlayer player)         
                 Nothing -> do
-                    putStrLn "Jogada inválida, tente novamente."
+                    putStrLn "Jogada inválida, tente novamente\n"
                     playGame board player
         _ -> do
-            putStrLn "Jogada inválida, tente novamente."
+            putStrLn "Jogada inválida, tente novamente\n"
             playGame board player
   where
     getLine' = getInputLine "" >>= maybe (return "") return
@@ -75,6 +83,7 @@ nextPlayer (King White) = Black
 
 main :: IO ()
 main = do
+    putStrLn menuArt
     let initialBoard = createInitialBoard
     printBoard initialBoard
     playGame initialBoard Black
