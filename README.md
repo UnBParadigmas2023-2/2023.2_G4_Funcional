@@ -27,7 +27,11 @@ Este é um projeto de implementação do jogo de damas em Haskell. O jogo de dam
 - Verificação de vitória para determinar o vencedor do jogo.
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+<img width="1512" alt="Captura de Tela 2023-09-22 às 07 17 50" src="https://github.com/UnBParadigmas2023-2/2023.2_G4_Funcional/assets/78980842/f8b3fc11-1428-43a4-a978-b7c9d6232166">
+
+<img width="1511" alt="Captura de Tela 2023-09-22 às 07 19 53" src="https://github.com/UnBParadigmas2023-2/2023.2_G4_Funcional/assets/78980842/f1004011-9557-495b-827c-6795a8916627">
+
+
 
 ## Instalação 
 **Linguagens**: Haskell<br>
