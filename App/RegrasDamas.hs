@@ -1,5 +1,3 @@
--- RegrasDamas.hs
-
 module RegrasDamas
     ( validateMove
     , checkWin
@@ -7,9 +5,7 @@ module RegrasDamas
     , executeCaptureMove
     , Piece(..)
     , Board
-    -- ... e possivelmente outras funções e tipos que você queira exportar
     ) where
-
 
 import Data.List
 
@@ -56,7 +52,6 @@ validateMove board player rowFrom colFrom rowTo colTo
         | isKingPiece = replaceAt rowTo colTo (King player) $ replaceAt rowFrom colFrom Empty board
         | otherwise = replaceAt rowTo colTo player $ replaceAt rowFrom colFrom Empty board
     invalidMove = outOfBounds || notPlayerPiece || notEmpty || (not isCaptureMove && not isSimpleMove)
-
 executeCaptureMove :: Board -> Piece -> Int -> Int -> Int -> Int -> Board
 executeCaptureMove board player rowFrom colFrom rowTo colTo =
     let intermediateBoard = replaceAt rowTo colTo player $ replaceAt (rowFrom + signum (rowTo - rowFrom)) (colFrom + signum (colTo - colFrom)) Empty $ replaceAt rowFrom colFrom Empty board
@@ -79,7 +74,6 @@ isValidCapture board player rowFrom colFrom rowTo colTo =
 replaceAt :: Int -> Int -> a -> [[a]] -> [[a]]
 replaceAt row col val matrix = take row matrix ++ [take col (matrix !! row) ++ [val] ++ drop (col + 1) (matrix !! row)] ++ drop (row + 1) matrix
 
-
 nextPlayer :: Piece -> Piece
 nextPlayer Black = White
 nextPlayer White = Black
@@ -87,5 +81,4 @@ nextPlayer (King Black) = White
 nextPlayer (King White) = Black
 
 checkWin :: Board -> Piece -> Bool
-checkWin board player =
-    all (\row -> all (\piece -> piece /= nextPlayer player) row) board
+checkWin board player = null [() | row <- board, (nextPlayer player) `elem` row]
