@@ -71,4 +71,4 @@ checkWin :: Board -> Piece -> Bool
 checkWin board player = null [() | row <- board, player `elem` row]
 
 checkDraw :: Board -> Piece -> Bool
-checkDraw board player = null $ [() | row <- board, player `elem` row]
+checkDraw board player = null $ [() | row <- bord, Piece player `elem` row]
