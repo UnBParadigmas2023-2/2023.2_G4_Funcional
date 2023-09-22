@@ -1,4 +1,4 @@
-import RegrasDamas (validateMove, checkWin, canCapture, executeCaptureMove, Piece(..), Board)
+import RegrasDamas (validateMove, checkWin, checkDraw, canCapture, executeCaptureMove, Piece(..), Board)
 import Data.List (intersperse)
 import System.Console.Haskeline
 import Menu
@@ -24,7 +24,7 @@ printBoard board = do
 
 createInitialBoard :: Board
 createInitialBoard = 
-    [ [Empty, Black, Empty, Black, Empty, Black, Empty, Black]
+  [ [Empty, Black, Empty, Black, Empty, Black, Empty, Black]
     , [Black, Empty, Black, Empty, Black, Empty, Black, Empty]
     , [Empty, Black, Empty, Black, Empty, Black, Empty, Black]
     , [Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty]
@@ -61,7 +61,11 @@ playGame board player = do
                                     _ -> do
                                         putStrLn "Jogada inválida, tente novamente."
                                         playGame newBoard player
-                            else playGame newBoard (nextPlayer player)
+                            else if checkDraw newBoard 
+                                    then do 
+                                        putStrLn $ "O jogo empatou!"
+                                        return ()
+                                    else playGame newBoard (nextPlayer player)         
                 Nothing -> do
                     putStrLn "Jogada inválida, tente novamente\n"
                     playGame board player

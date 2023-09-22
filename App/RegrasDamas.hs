@@ -1,6 +1,7 @@
 module RegrasDamas
     ( validateMove
     , checkWin
+    , checkDraw
     , canCapture
     , executeCaptureMove
     , Piece(..)
@@ -8,6 +9,7 @@ module RegrasDamas
     ) where
 
 import Data.List
+import Data.Maybe (isNothing)
 
 data Piece = Empty | Black | White | King Piece deriving (Eq, Show)
 type Board = [[Piece]]
@@ -81,4 +83,13 @@ nextPlayer (King Black) = White
 nextPlayer (King White) = Black
 
 checkWin :: Board -> Piece -> Bool
-checkWin board player = null [() | row <- board, (nextPlayer player) `elem` row]
+checkWin board player =
+    all (\row -> all (\piece -> piece /= nextPlayer player) row) board
+
+checkDraw :: Board -> Bool
+checkDraw board =
+    not (any (canMove board Black) [0..7]) && not (any (canMove board White) [0..7])
+  where
+    canMove :: Board -> Piece -> Int -> Bool
+    canMove b player row =
+        any (\col -> any (\r -> any (\c -> isNothing (validateMove b player row col r c)) [0..7]) [0..7]) [0..7]
