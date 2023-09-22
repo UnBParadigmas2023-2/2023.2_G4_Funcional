@@ -38,10 +38,19 @@ Este é um projeto de implementação do jogo de damas em Haskell. O jogo de dam
 **Tecnologias**: GHC, Cabal, Make<br>
 
 ## Uso 
-Clone ou faça o download deste repositório.
-Certifique-se de ter o GHC (Glasgow Haskell Compiler) instalado em seu sistema.
-Compile o código-fonte com o comando ghc jogo_de_damas.hs.
-Execute o jogo com o comando ./jogo_de_damas.
+Certifique-se de ter o GHC (Glasgow Haskell Compiler) e também o Haskell instalado em seu sistema.
+1. Clone o repositório
+
+```bash
+git clone https://github.com/UnBParadigmas2023-2/2023.2_G4_Funcional.git
+```
+
+2. Execute a aplicação
+```bash
+stack build
+stack exec damas-exe
+```
+Após a execução destes comandos, você será capaz de visualizar a aplicação em execução no terminal. 
 
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.
@@ -60,6 +69,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Vinicius Assumpção  |  Criação do esqueleto base que foi utilizado para a implementação do projeto | Excelente |
 | João Pedro de Camargo Vaz  |  Participação na criação e edição do esqueleto do jogo e criação de regras para validação de jogadas e de turnos | Excelente |
 | Gabriel Roger Amorim da Cruz | Participação na criação de regras para validação de jogadas e criação de tratamentos para lidar com entradas inválidas/inesperadas do usuário | Excelente | 
+| Josué Teixeira Santana | Participação na criação de regras para validação da captura de peças e correção nas configurações da aplicação | Excelente | 
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
