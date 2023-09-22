@@ -15,6 +15,7 @@
 | 20/0020650 |  João Pedro de Camargo Vaz |
 | 18/0124099 |  Juliana Pereira Valle Gonçalves |
 | 20/0018248 |  Gabriel Roger Amorim da Cruz |
+| 19/0015721 |  Júlio César Martins França |
 
 ## Sobre 
 Este é um projeto de implementação do jogo de damas em Haskell. O jogo de damas é um clássico jogo de tabuleiro para dois jogadores, onde o objetivo é capturar todas as peças do adversário ou bloqueá-las de forma que não possam mais mover.
@@ -73,6 +74,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Carla Rocha Cangussú | Criação da regra de verificação simples de vitória e participação na criação da regra de verificação de empate simples | Excelente |
 | Juliana Pereira Valle Gonçalves | Participação na criação da regra de verificação de empate simples | Excelente |
 | Daniel Primo de Melo  | Evolução das regras de captura, otimização do codigo fonte em cálculo de variáveis | Excelente |
+| Júlio César Martins frança | Participação na criação da promoção de peças e do movimento e captura de peças promovidas | Excelente |
 
 ## Outros 
 
