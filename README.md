@@ -13,6 +13,7 @@
 | 18/0063162 |  Daniel Primo de Melo |
 | 20/2029012 |  Josué Teixeira Santana |
 | 20/0020650 |  João Pedro de Camargo Vaz |
+| 18/0124099 |  Juliana Pereira Valle Gonçalves |
 | 20/0018248 |  Gabriel Roger Amorim da Cruz |
 
 ## Sobre 
