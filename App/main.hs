@@ -1,4 +1,4 @@
-import RegrasDamas (validateMove, checkWin, Piece(..), Board)
+import RegrasDamas (validateMove, checkWin, canCapture, executeCaptureMove, Piece(..), Board)
 import Data.List (intersperse)
 import System.Console.Haskeline
 
@@ -39,7 +39,21 @@ playGame board player = do
                     printBoard newBoard
                     if checkWin newBoard player
                         then putStrLn $ "Jogador " ++ show player ++ " venceu!"
-                        else playGame newBoard (nextPlayer player)
+                        else if canCapture newBoard player rowTo colTo
+                            then do
+                                putStrLn "Captura disponível. Informe a próxima captura (linhaDestino colunaDestino): "
+                                input' <- runInputT defaultSettings getLine'
+                                case map read (words input') of
+                                    [nextRow, nextCol] ->
+                                        case validateMove newBoard player rowTo colTo nextRow nextCol of
+                                            Just newerBoard -> playGame (executeCaptureMove newerBoard player rowTo colTo nextRow nextCol) player
+                                            Nothing -> do
+                                                putStrLn "Jogada de captura inválida, tente novamente."
+                                                playGame newBoard player
+                                    _ -> do
+                                        putStrLn "Jogada inválida, tente novamente."
+                                        playGame newBoard player
+                            else playGame newBoard (nextPlayer player)
                 Nothing -> do
                     putStrLn "Jogada inválida, tente novamente."
                     playGame board player
