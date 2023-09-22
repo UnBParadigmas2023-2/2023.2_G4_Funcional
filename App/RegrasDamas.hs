@@ -7,7 +7,7 @@ module RegrasDamas
     , canCapture
     , executeCaptureMove
     , Piece(..)
-      , Board
+    , Board
     -- ... e possivelmente outras funções e tipos que você queira exportar
     ) where
 
@@ -70,5 +70,25 @@ nextPlayer White = Black
 checkWin :: Board -> Piece -> Bool
 checkWin board player = null [() | row <- board, player `elem` row]
 
-checkDraw :: Board -> Piece -> Bool
-checkDraw board player = not (any (elem Empty) board) && not (any (elem player) board)
+checkDraw :: Board -> Piece -> Piece -> Bool
+checkDraw board player1 player2 =
+    not (hasValidMove board player1) && not (hasValidMove board player2)
+  where
+    hasValidMove b p =
+        any (\row -> any (\col -> canCapture b p row col || canMoveSimple b p row col) [0..7]) [0..7]
+    canMoveSimple b p row col =
+        any (\(rowDiff, colDiff) -> isValidMove b p row col (row + rowDiff) (col + colDiff)) moveDirections
+    moveDirections = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
+
+isValidMove :: Board -> Piece -> Int -> Int -> Int -> Int -> Bool
+isValidMove board player rowFrom colFrom rowTo colTo =
+    let rowDiff = rowTo - rowFrom
+        colDiff = colTo - colFrom
+    in abs rowDiff == 1 && abs colDiff == 1 && isEmptyCell rowTo colTo
+  where
+    isEmptyCell r c = r >= 0 && r < 8 && c >= 0 && c < 8 && board !! r !! c == Empty
+
+
+
+
+

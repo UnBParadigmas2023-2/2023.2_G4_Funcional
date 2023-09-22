@@ -51,7 +51,7 @@ playGame board player = do
                                     _ -> do
                                         putStrLn "Jogada inválida, tente novamente."
                                         playGame newBoard player
-                            else if checkDraw newBoard player
+                            else if checkDraw newBoard player (nextPlayer player)
                                     then putStrLn $ "O jogo empatou!"
                                     else playGame newBoard (nextPlayer player)         
                 Nothing -> do
