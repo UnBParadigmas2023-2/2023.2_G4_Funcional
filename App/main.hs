@@ -24,14 +24,14 @@ printBoard board = do
 
 createInitialBoard :: Board
 createInitialBoard = 
-     [ [Empty, Black, Empty, Empty, Empty, Empty, Empty, Empty]
-    , [Empty, Empty, Black, Empty, Black, Empty, Black, Empty]
-    , [Empty, Black, Empty, Black, Empty, Black, Empty, Black]
+  [ [Empty, Black, Empty, Black, Empty, Black, Empty, Black]
     , [Black, Empty, Black, Empty, Black, Empty, Black, Empty]
+    , [Empty, Black, Empty, Black, Empty, Black, Empty, Black]
+    , [Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty]
+    , [Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty]
+    , [White, Empty, White, Empty, White, Empty, White, Empty]
     , [Empty, White, Empty, White, Empty, White, Empty, White]
     , [White, Empty, White, Empty, White, Empty, White, Empty]
-    , [Empty, White, Empty, White, Empty, White, Empty, Empty]
-    , [Empty, Empty, White, Empty, Empty, Empty, Empty, Empty]
     ]
 
 playGame :: Board -> Piece -> IO ()
