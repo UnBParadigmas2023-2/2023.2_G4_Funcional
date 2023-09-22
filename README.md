@@ -72,7 +72,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Josué Teixeira Santana | Participação na criação de regras para validação da captura de peças e correção nas configurações da aplicação | Excelente |
 | Carla Rocha Cangussú | Criação da regra de verificação simples de vitória e participação na criação da regra de verificação de empate simples | Excelente |
 | Juliana Pereira Valle Gonçalves | Participação na criação da regra de verificação de empate simples | Excelente |
-| Daniel Primo de Melo  | Participação na criação da regra de verificação de empate simples | Excelente |
+| Daniel Primo de Melo  | Evolução das regras de captura, otimização do codigo fonte em cálculo de variáveis | Excelente |
 
 ## Outros 
 
