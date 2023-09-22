@@ -7,7 +7,7 @@ module RegrasDamas
     , canCapture
     , executeCaptureMove
     , Piece(..)
-    , Board
+      , Board
     -- ... e possivelmente outras funções e tipos que você queira exportar
     ) where
 
@@ -71,4 +71,4 @@ checkWin :: Board -> Piece -> Bool
 checkWin board player = null [() | row <- board, player `elem` row]
 
 checkDraw :: Board -> Piece -> Bool
-checkDraw board player = null $ [() | row <- board, player `elem` row]
+checkDraw board player = not (any (elem Empty) board) && not (any (elem player) board)
