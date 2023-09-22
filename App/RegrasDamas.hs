@@ -3,6 +3,7 @@
 module RegrasDamas
     ( validateMove
     , checkWin
+    , checkDraw
     , canCapture
     , executeCaptureMove
     , Piece(..)
@@ -68,3 +69,6 @@ nextPlayer White = Black
 
 checkWin :: Board -> Piece -> Bool
 checkWin board player = null [() | row <- board, player `elem` row]
+
+checkDraw :: Board -> Piece -> Bool
+checkDraw board player =   null $ [() | row <- bord, Piece player `elem` row]

@@ -1,4 +1,4 @@
-import RegrasDamas (validateMove, checkWin, canCapture, executeCaptureMove, Piece(..), Board)
+import RegrasDamas (validateMove, checkWin, checkDraw, canCapture, executeCaptureMove, Piece(..), Board)
 import Data.List (intersperse)
 import System.Console.Haskeline
 
@@ -51,7 +51,9 @@ playGame board player = do
                                     _ -> do
                                         putStrLn "Jogada inválida, tente novamente."
                                         playGame newBoard player
-                            else playGame newBoard (nextPlayer player)
+                            else if checkDraw newBoard player
+                                    then putStrLn $ "O jogo empatou!"
+                                    else playGame newBoard (nextPlayer player)         
                 Nothing -> do
                     putStrLn "Jogada inválida, tente novamente."
                     playGame board player
