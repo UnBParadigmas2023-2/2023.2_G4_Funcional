@@ -16,14 +16,14 @@ printBoard board = putStrLn $ unlines (legend : headerRow : map showRow (zip [0.
 
 createInitialBoard :: Board
 createInitialBoard = 
-    [ [Empty, Black, Empty, Black, Empty, Black, Empty, Black]
-    , [Black, Empty, Black, Empty, Black, Empty, Black, Empty]
+     [ [Empty, Black, Empty, Empty, Empty, Empty, Empty, Empty]
+    , [Empty, Empty, Black, Empty, Black, Empty, Black, Empty]
     , [Empty, Black, Empty, Black, Empty, Black, Empty, Black]
-    , [Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty]
-    , [Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty]
-    , [White, Empty, White, Empty, White, Empty, White, Empty]
+    , [Black, Empty, Black, Empty, Black, Empty, Black, Empty]
     , [Empty, White, Empty, White, Empty, White, Empty, White]
     , [White, Empty, White, Empty, White, Empty, White, Empty]
+    , [Empty, White, Empty, White, Empty, White, Empty, Empty]
+    , [Empty, Empty, White, Empty, Empty, Empty, Empty, Empty]
     ]
 
 playGame :: Board -> Piece -> IO ()
@@ -53,8 +53,10 @@ playGame board player = do
                                     _ -> do
                                         putStrLn "Jogada inválida, tente novamente."
                                         playGame newBoard player
-                            else if checkDraw newBoard player (nextPlayer player)
-                                    then putStrLn $ "O jogo empatou!"
+                            else if checkDraw newBoard 
+                                    then do 
+                                        putStrLn $ "O jogo empatou!"
+                                        return ()
                                     else playGame newBoard (nextPlayer player)         
                 Nothing -> do
                     putStrLn "Jogada inválida, tente novamente."
