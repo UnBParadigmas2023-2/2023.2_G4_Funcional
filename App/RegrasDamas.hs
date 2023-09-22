@@ -87,4 +87,5 @@ nextPlayer (King Black) = White
 nextPlayer (King White) = Black
 
 checkWin :: Board -> Piece -> Bool
-checkWin board player = null [() | row <- board, player `elem` row]
+checkWin board player =
+    all (\row -> all (\piece -> piece /= nextPlayer player) row) board
