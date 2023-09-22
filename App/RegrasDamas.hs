@@ -88,8 +88,8 @@ nextPlayer (King Black) = White
 nextPlayer (King White) = Black
 
 checkWin :: Board -> Piece -> Bool
-<<<<<<< HEAD
-checkWin board player = null [() | row <- board, player `elem` row]
+checkWin board player =
+    all (\row -> all (\piece -> piece /= nextPlayer player) row) board
 
 checkDraw :: Board -> Piece -> Piece -> Bool
 checkDraw board player1 player2 =
@@ -108,12 +108,3 @@ isValidMove board player rowFrom colFrom rowTo colTo =
     in abs rowDiff == 1 && abs colDiff == 1 && isEmptyCell rowTo colTo
   where
     isEmptyCell r c = r >= 0 && r < 8 && c >= 0 && c < 8 && board !! r !! c == Empty
-
-
-
-
-
-=======
-checkWin board player =
-    all (\row -> all (\piece -> piece /= nextPlayer player) row) board
->>>>>>> 27e0270248a84256730f89885b8c793973120821
