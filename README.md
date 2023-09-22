@@ -71,6 +71,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Gabriel Roger Amorim da Cruz | Participação na criação de regras para validação de jogadas, criação de tratamentos para lidar com entradas inválidas/inesperadas do usuário, melhoria da interface e correção de erros | Excelente | 
 | Josué Teixeira Santana | Participação na criação de regras para validação da captura de peças e correção nas configurações da aplicação | Excelente |
 | Carla Rocha Cangussú | Criação da regra de verificação simples de vitória e participação na criação da regra de verificação de empate simples | Excelente |
+| Juliana Pereira Valle Gonçalves | Participação na criação da regra de verificação de empate simples | Excelente |
 
 ## Outros 
 
