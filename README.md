@@ -26,6 +26,7 @@ Este é um projeto de implementação do jogo de damas em Haskell. O jogo de dam
 - Validação de movimentos de peças de acordo com as regras do jogo.
 - Tratamento de capturas e movimentos especiais, como promoção de peças.
 - Verificação de vitória para determinar o vencedor do jogo.
+- Verificação de empate
 
 ## Screenshots
 <img width="1512" alt="Captura de Tela 2023-09-22 às 07 17 50" src="https://github.com/UnBParadigmas2023-2/2023.2_G4_Funcional/assets/78980842/f8b3fc11-1428-43a4-a978-b7c9d6232166">
