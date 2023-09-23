@@ -10,6 +10,7 @@ module RegrasDamas
 
 import Data.List
 import Data.Maybe (isNothing)
+import Data.Maybe (isJust)
 
 data Piece = Empty | Black | White | King Piece deriving (Eq, Show)
 type Board = [[Piece]]
@@ -86,10 +87,17 @@ checkWin :: Board -> Piece -> Bool
 checkWin board player =
     all (\row -> all (\piece -> piece /= nextPlayer player) row) board
 
+canMakeMove :: Board -> Piece -> Bool
+canMakeMove board player =
+    any (\from -> any (\to -> isJust (validateMove board player (fst from) (snd from) (fst to) (snd to))) validMoves) validMoves
+  where
+    validMoves = [(i, j) | i <- [0 .. 7], j <- [0 .. 7], isOwnPiece board player i j]
+
+isOwnPiece :: Board -> Piece -> Int -> Int -> Bool
+isOwnPiece board player row col = case board !! row !! col of
+    King p -> p == player
+    piece -> piece == player
+
 checkDraw :: Board -> Bool
 checkDraw board =
-    not (any (canMove board Black) [0..7]) && not (any (canMove board White) [0..7])
-  where
-    canMove :: Board -> Piece -> Int -> Bool
-    canMove b player row =
-        any (\col -> any (\r -> any (\c -> isNothing (validateMove b player row col r c)) [0..7]) [0..7]) [0..7]
+    not (canMakeMove board Black || canMakeMove board White)
