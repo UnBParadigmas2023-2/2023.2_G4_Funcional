@@ -61,9 +61,9 @@ Procure:
 (ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
 (iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
 (iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
-TEMPO: +/- 15min
 
+TEMPO: +/- 15min
+ [LINK PARA O VÍDEO DE APRESENTAÇÃO](https://drive.google.com/file/d/1rsJhTyUf7hECHexLh92AF60sxaXYkKAp/view?usp=sharing)
 ## Participações
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
